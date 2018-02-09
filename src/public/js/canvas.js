@@ -11,8 +11,8 @@ export class Canvas {
     this.elm = document.getElementById(this.id);
     if (!this.elm) throw new Error('Canvas element not found!');
 
-    this.elm.width = document.body.clientWidth; //document.width is obsolete
-    this.elm.height = document.body.clientHeight; //document.height is obsolete
+    this.elm.width = window.innerWidth;
+    this.elm.height = window.innerHeight;
     this.width = this.elm.width;
     this.height = this.elm.height;
 
