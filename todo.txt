@@ -1,0 +1,30 @@
+Classes
+-------
+Main
+  Knows:
+    - Canvas
+    - Game
+    - InputController
+  Does:
+    - Creates a Game
+    - Starts game loop
+  
+Game
+  Knows:
+    - Canvas
+    - InputController
+  Does:
+    - Main game loop
+
+Canvas
+  Knows:
+  Does:
+    - Gets graphics context
+
+InputController
+  Knows:
+    - Canvas?
+  Does:
+    - Handle clicks
+    - Handle button presses
+    - Handle screen resizes (canvas.init())
