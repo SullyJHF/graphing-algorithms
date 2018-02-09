@@ -28,3 +28,26 @@ InputController
     - Handle clicks
     - Handle button presses
     - Handle screen resizes (canvas.init())
+
+
+
+
+Graph
+  Knows:
+    - Node
+  Does:
+    - Holds array of nodes
+    - Holds array of edges
+
+Node
+  Knows:
+  Does:
+    - Defines a node
+    - Renders a node
+
+Edge
+  Knows:
+    - Node
+  Does:
+    - Defines an edge based on two nodes
+    - Renders an edge
