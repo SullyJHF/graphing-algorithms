@@ -5,7 +5,8 @@ import { GraphNode } from './entities/graph-node';
 import { Edge } from './entities/edge';
 
 
-const NODE_COUNT = Math.ceil(Math.random() * 9);
+const MIN_NODES = 2;
+const NODE_COUNT = MIN_NODES + Math.floor(Math.random() * 8);
 const EDGE_COUNT = Math.ceil(NODE_COUNT * (1 + Math.random() * 1.5));
 
 
