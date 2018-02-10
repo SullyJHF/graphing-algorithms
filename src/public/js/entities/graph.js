@@ -5,6 +5,7 @@ export class Graph {
   constructor() {
     this.nodes = [];
     this.edges = [];
+    this.directed = false;
   }
 
   addNode(node) {
@@ -15,6 +16,7 @@ export class Graph {
   addEdge(edge) {
     if (!this.nodes.includes(edge.u) || !this.nodes.includes(edge.v)) throw new Error('both nodes of an edge must already be part of this graph');
     if (this.edges.includes(edge)) return;
+    edge.directed = this.directed;
     this.edges.push(edge);
   }
 
@@ -33,12 +35,12 @@ export class Graph {
   }
 
   render(ctx) {
-    for (let node of this.nodes) {
-      node.render(ctx);
-    }
-
     for (let edge of this.edges) {
       edge.render(ctx);
+    }
+
+    for (let node of this.nodes) {
+      node.render(ctx);
     }
   }
 }

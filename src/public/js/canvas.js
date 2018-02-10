@@ -11,10 +11,12 @@ export class Canvas {
     this.elm = document.getElementById(this.id);
     if (!this.elm) throw new Error('Canvas element not found!');
 
-    this.elm.width = window.innerWidth;
-    this.elm.height = window.innerHeight;
+    this.elm.width = window.innerWidth * 2;
+    this.elm.height = window.innerHeight * 2;
     this.width = this.elm.width;
     this.height = this.elm.height;
+    this.elm.style.width = window.innerWidth + 'px';
+    this.elm.style.height = window.innerHeight + 'px';
 
     this.context = this.elm.getContext('2d');
 
