@@ -1,8 +1,22 @@
 import { Canvas } from './canvas';
+import { Game } from './game';
 
 import { Graph } from './entities/graph';
 import { GraphNode } from './entities/graph-node';
 import { Edge } from './entities/edge';
+
+
+const game = new Game();
+
+game.start();
+
+game.on('render', (frameTime) => {
+  // render everything in here
+});
+
+game.on('update', (tick) => {
+  // update state here
+});
 
 
 const MIN_NODES = 2;

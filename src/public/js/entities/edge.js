@@ -35,11 +35,13 @@ export class Edge {
 
     let branchAAngle = edgeAngle + this.arrowAngle;
     let branchBAngle = edgeAngle - this.arrowAngle;
+
     let arrowBranchAX = Math.cos(branchAAngle) * this.arrowLength + this.v.x;
     let arrowBranchAY = Math.sin(branchAAngle) * this.arrowLength + this.v.y;
 
     let arrowBranchBX = Math.cos(branchBAngle) * this.arrowLength + this.v.x;
     let arrowBranchBY = Math.sin(branchBAngle) * this.arrowLength + this.v.y;
+
     ctx.beginPath();
     ctx.moveTo(this.v.x, this.v.y);
     ctx.lineTo(arrowBranchAX, arrowBranchAY);
