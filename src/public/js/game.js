@@ -44,7 +44,7 @@ export class Game extends EventEmitter {
   queueUpdates(tickCount) {
     for(let i = 0; i < tickCount; i++) {
       this.lastTick = this.lastTick + this.tickLength; // Now lastTick is this tick.
-      this.update(this.lastTick);
+      this.update(this.tickLength / 1000);
     }
   }
 

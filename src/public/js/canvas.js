@@ -24,4 +24,9 @@ export class Canvas {
 
     this.context.fillRect(0, 0, this.width, this.height);
   }
+
+  clear() {
+    this.context.fillStyle = '#000000';
+    this.context.fillRect(0, 0, this.width, this.height);
+  }
 }

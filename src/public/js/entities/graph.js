@@ -38,6 +38,14 @@ export class Graph {
     this.edges.push(edge);
   }
 
+  getEdges(node1, node2) {
+    if (node1.id in this.adjacency && node2.id in this.adjacency[node1.id]) {
+      return this.adjacency[node1.id][node2.id];
+    }
+
+    return [];
+  }
+
   arrangeNodes(width, height) {
     let middle = {
       x: width / 2,

@@ -28,7 +28,7 @@ export class GraphNode {
     let textMetrics = ctx.measureText(this.value.toString());
     let x = this.x - textMetrics.width / 2;
     let y = this.y + 18 / 2;
-    ctx.strokeText(this.value.toString(), x, y);
-    ctx.fillText(this.value.toString(), x, y);
+    ctx.strokeText(this.id.toString(), x, y);
+    ctx.fillText(this.id.toString(), x, y);
   }
 }
