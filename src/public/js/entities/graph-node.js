@@ -1,9 +1,11 @@
 export class GraphNode {
-  constructor(value) {
+  constructor(id, value) {
+    this.id = id;
     this.x = 0;
     this.y = 0;
     this.radius = 14;
     this.value = value;
+    this.mass = value;
   }
 
   setPosition(x, y) {

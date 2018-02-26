@@ -5,18 +5,36 @@ export class Graph {
   constructor() {
     this.nodes = [];
     this.edges = [];
+    this.nodeSet = {};
+    this.adjacency = {};
     this.directed = false;
   }
 
   addNode(node) {
     if (!(node instanceof GraphNode)) throw new Error('node must be of type GraphNode');
-    this.nodes.push(node);
+    if (!(node.id in this.nodeSet)) this.nodes.push(node);
+    this.nodeSet[node.id] = node;
+    return node;
   }
 
   addEdge(edge) {
-    if (!this.nodes.includes(edge.u) || !this.nodes.includes(edge.v)) throw new Error('both nodes of an edge must already be part of this graph');
-    if (this.edges.includes(edge)) return;
+    if (!(edge.u.id in this.nodeSet) || !(edge.v.id in this.nodeSet)) throw new Error('both nodes of an edge must already be part of this graph');
+    if (this.edges.includes(edge.id)) return;
+
+    if (!(edge.u.id in this.adjacency)) {
+      this.adjacency[edge.u.id] = {};
+    }
+
+    if (!(edge.v.id in this.adjacency[edge.u.id])) {
+      this.adjacency[edge.u.id][edge.v.id] = [];
+    }
+
+    if (!this.adjacency[edge.u.id][edge.v.id].includes(edge)) {
+      this.adjacency[edge.u.id][edge.v.id].push(edge);
+    }
+
     edge.directed = this.directed;
+
     this.edges.push(edge);
   }
 

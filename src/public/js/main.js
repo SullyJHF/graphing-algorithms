@@ -31,7 +31,7 @@ const graph = new Graph();
 graph.directed = true;
 
 for (let i = 0; i < NODE_COUNT; i++) {
-  let node = new GraphNode(Math.ceil(Math.random() * 9));
+  let node = new GraphNode(i, Math.ceil(Math.random() * 9));
   graph.addNode(node);
 }
 
@@ -41,7 +41,7 @@ for (let i = 0; i < EDGE_COUNT; i++) {
   let u = graph.nodes[i % graph.nodes.length];
   let v = graph.nodes[Math.floor(Math.random() * graph.nodes.length)];
   if (u === v) continue;
-  graph.addEdge(new Edge(u, v));
+  graph.addEdge(new Edge(i, u, v));
 }
 
 

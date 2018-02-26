@@ -2,9 +2,10 @@ import { GraphNode } from './graph-node';
 
 
 export class Edge {
-  constructor(u, v) {
+  constructor(id, u, v) {
     if (!(u instanceof GraphNode) || !(v instanceof GraphNode)) throw new Error('edge nodes must be instances of GraphNode');
     if (u === v) throw new Error('u and v cannot be the same node');
+    this.id = id;
     this.u = u;
     this.v = v;
     this.weight = Math.random() * 100;
