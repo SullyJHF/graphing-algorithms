@@ -40,28 +40,23 @@ const game = new Game();
 
 game.start();
 
-game.on('render', (frameTime) => {
+game.on('render', () => {
   canvas.clear();
-  // render everything in here
+
   layout.eachEdge(function(edge, spring) {
-    // edge.render(canvas.context);
-    spring.render(canvas);
-    // t.drawEdge(edge, spring.point1.p, spring.point2.p);
+    canvas.renderEdge(edge, spring);
   });
 
   layout.eachNode(function(node, point) {
-    // node.render(canvas.context);
-    point.render(canvas, node.mass);
-    // console.log(node, point);
-    // t.drawNode(node, point.p);
+    canvas.renderNode(node, point);
   });
 });
 
-game.on('update', (tick) => {
+game.on('update', (timestep) => {
   // update state here
-  layout.tick(tick);
-  console.log(layout.totalEnergy(tick));
-  if (layout.totalEnergy(tick) < layout.minEnergyThreshold) {
+  layout.tick(timestep);
+
+  if (layout.totalEnergy(timestep) < layout.minEnergyThreshold) {
     game.stop();
   }
 });

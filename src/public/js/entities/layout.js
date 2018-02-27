@@ -29,8 +29,6 @@ export class Layout {
       this.nodePoints[node.id] = new Point(Vector.random(), mass);
     }
 
-    // console.log('node point:', this.nodePoints[node.id]);
-
     return this.nodePoints[node.id];
   }
 

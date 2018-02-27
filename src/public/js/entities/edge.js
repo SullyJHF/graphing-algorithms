@@ -10,52 +10,5 @@ export class Edge {
     this.v = v;
     this.weight = 100 + Math.random() * maxLength / 3;
     this.length = this.weight;
-    this.directed = false;
-    this.arrowAngle = Math.PI / 10;
-    this.arrowLength = 30;
-    this.arrowFill = true;
-  }
-
-  render(ctx) {
-    ctx.strokeStyle = '#EEEEEE';
-    ctx.lineWidth = 2;
-
-    // stroke line
-    ctx.beginPath();
-    ctx.moveTo(this.u.x, this.u.y);
-    ctx.lineTo(this.v.x, this.v.y);
-    ctx.stroke();
-    ctx.closePath();
-
-    // stroke arrow
-    if (!this.directed) return;
-
-    let width = this.v.x - this.u.x;
-    let height = this.v.y - this.u.y;
-
-    let edgeAngle = Math.PI + Math.atan2(height, width);
-
-    let branchAAngle = edgeAngle + this.arrowAngle;
-    let branchBAngle = edgeAngle - this.arrowAngle;
-
-    let arrowBranchAX = Math.cos(branchAAngle) * this.arrowLength + this.v.x;
-    let arrowBranchAY = Math.sin(branchAAngle) * this.arrowLength + this.v.y;
-
-    let arrowBranchBX = Math.cos(branchBAngle) * this.arrowLength + this.v.x;
-    let arrowBranchBY = Math.sin(branchBAngle) * this.arrowLength + this.v.y;
-
-    ctx.beginPath();
-    ctx.moveTo(this.v.x, this.v.y);
-    ctx.lineTo(arrowBranchAX, arrowBranchAY);
-    ctx.moveTo(this.v.x, this.v.y);
-    ctx.lineTo(arrowBranchBX, arrowBranchBY);
-    if (this.arrowFill) {
-      ctx.lineTo(arrowBranchAX, arrowBranchAY);
-      ctx.fillStyle = '#EEEEEE';
-      ctx.fill();
-    } else {
-      ctx.stroke();
-    }
-    ctx.closePath();
   }
 }

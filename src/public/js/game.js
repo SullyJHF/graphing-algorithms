@@ -6,14 +6,17 @@ export class Game extends EventEmitter {
     this.animationFrame = null;
 
     this.tick = this.tick.bind(this);
-    this.tickLength = 20;
+    let targetUps = 60;
+    this.tickLength = 1000 / targetUps;
     this.lastTick = 0;
     this.lastRender = this.lastTick;
+    this.running = false;
   }
 
   start() {
     console.log('Starting loop');
 
+    this.running = true;
     this.lastTick = window.performance.now();
     this.lastRender = this.lastTick
     this.tick(window.performance.now());
@@ -22,10 +25,12 @@ export class Game extends EventEmitter {
   stop() {
     console.log('Stopping loop');
 
+    this.running = false;
     window.cancelAnimationFrame(this.animationFrame);
   }
 
   tick(frameTime) {
+    if (!this.running) return;
     this.animationFrame = window.requestAnimationFrame(this.tick);
 
     let nextTick = this.lastTick + this.tickLength;
@@ -37,7 +42,7 @@ export class Game extends EventEmitter {
     }
 
     this.queueUpdates(tickCount);
-    this.render(frameTime);
+    this.render();
     this.lastRender = frameTime;
   }
 
@@ -48,11 +53,11 @@ export class Game extends EventEmitter {
     }
   }
 
-  update(tick) {
-    this.emit('update', tick);
+  update(timestep) {
+    this.emit('update', timestep);
   }
 
-  render(frameTime) {
-    this.emit('render', frameTime);
+  render() {
+    this.emit('render');
   }
 }
